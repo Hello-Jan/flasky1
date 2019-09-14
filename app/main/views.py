@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import render_template,session,redirect,url_for,flash,current_app
-from . import main
+from . import main,auth
 from .forms import NameForm
 from .. import db
 from ..models import User
@@ -33,3 +33,7 @@ def index():
 
 		return redirect(url_for('.index'))
 	return render_template('index.html',form=form,name=session.get('name'),known=session.get('known',False)) 
+
+@auth.route('/login')
+def login():
+	return render_template('auth/login.html')

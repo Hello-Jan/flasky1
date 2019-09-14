@@ -23,5 +23,7 @@ def create_app(config_name):
 	#add route and error settings
 	from .main import main as main_blueprint
 	app.register_blueprint(main_blueprint)
+	from .main import auth as auth_blueprint
+	app.register_blueprint(auth_blueprint,url_prefix='/auth')
 	
 	return app
