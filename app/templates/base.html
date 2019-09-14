@@ -1,0 +1,41 @@
+{% extends "bootstrap/base.html" %} <!-- html import bootstrap by extends a bootstrap_html_base_model.(use extends) -->
+
+{% block title %}Flasky{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+<link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href=" {{ url_for('static',filename='favicon.ico') }} " type="image/x-icon">
+
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Navbar</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-warning">
+		<button type="alert" class="close" data-dismiss="alert">&times;</button>
+		{{ message }}
+	</div>
+	{% endfor %}
+	{% block page_content %}{% endblock %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}   <!-- base html import moment.js library -->
+<!-- why shtml cripts zone imports moment model  by a variable?(use variable) -->
+<!-- moment is from hello.py (moment=Moment(app)) -->
+{% endblock %}
