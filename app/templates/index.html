@@ -4,15 +4,13 @@
 {% block title %}welcome!{% endblock %}
 
 {% block page_content %}
-<h1>Hello,{% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
-<h2>
-{% if known %}
-welcome!
+<h1>Hello,
+{% if current_user.is_authenticated %}
+{{ current_user.username }}
 {% else %}
-Hi!
-{% endif %}
-</h2>
+Stranger
+{% endif %}!
+</h1>
 
-{{ wtf.quick_form(form) }}
 
 {% endblock %}

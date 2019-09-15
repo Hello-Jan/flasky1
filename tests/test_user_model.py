@@ -1,5 +1,5 @@
 import unittest
-from app.models import User  #the uppest layer don`t need to write ..app.models,you can directly use app
+from app.models import User  #the uppest layer don`t need to write ..app.models,you can directly use app.
 
 class UserModelTestCase(unittest.TestCase):
 	def test_password_setting(self): #must use test as the function`s very beginning,or the function will not run.
@@ -19,4 +19,4 @@ class UserModelTestCase(unittest.TestCase):
 	def test_password_salts_are_random(self):
 		u1=User(password='cat')
 		u2=User(password='cat')
-		self.assertTrue(u1.verify_password!=u2.verify_password)
+		self.assertTrue(u1.password_hash != u2.password_hash)

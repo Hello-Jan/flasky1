@@ -31,9 +31,5 @@ def index():
 				send_email(current_app.config['FLASKY_ADMIN'],'New user','mail/new_user',user=user)
 
 
-		return redirect(url_for('.index'))
+		return redirect(url_for('.index'))#.index is the short of main.index main is the name of its blueprint.
 	return render_template('index.html',form=form,name=session.get('name'),known=session.get('known',False)) 
-
-@auth.route('/login')
-def login():
-	return render_template('auth/login.html')
